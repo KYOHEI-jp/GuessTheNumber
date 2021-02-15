@@ -13,12 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var rNum = randomNumber()
-N
         val num = findViewById(R.id.num) as EditText
         val check = findViewById(R.id.check) as Button
 
         check.setOnClickListener {
             val enteredNumber = num.text.toString()
+
+            if (enteredNumber.isEmpty()) {
+                Toast.makeText(applicationContext, "数字を入れてね。", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             if (rNum != Integer.parseInt(enteredNumber)) {
                 Toast.makeText(applicationContext, "もう一度試してください。" + rNum, Toast.LENGTH_SHORT).show()
